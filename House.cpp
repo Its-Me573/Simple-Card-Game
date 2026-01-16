@@ -3,7 +3,10 @@
 #include <vector>
 #include <string>
 
-class PlayingHouse{
-    public:
-        std::vector<Card> playerCardInHand;//max of 3
-};
+PlayingHouse::PlayingHouse(){
+    //the 3 cards the player has at one time
+    std::vector<Card> HouseCardsInHand;
+    HouseCardsInHand.push_back(Card());
+    HouseCardsInHand.push_back(Card());
+    HouseCardsInHand.push_back(Card());
+}

@@ -2,6 +2,10 @@
 
 #define Cards_H
 
-struct Card;
+struct Card{
+    std::string suite;
+    std::string visualValue;
+    int numberValue;
+};
 
 #endif

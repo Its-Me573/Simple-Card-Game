@@ -3,8 +3,10 @@
 #include <vector>
 #include <string>
 
-class PlayingUser{
-    public:
-        std::vector<Card> playerCardInHand;//max of 3
-
-};
+PlayingUser::PlayingUser(){
+    //the 3 cards the player has at one time
+    std::vector<Card> playersCardsInHand;
+    playersCardsInHand.push_back(Card());
+    playersCardsInHand.push_back(Card());
+    playersCardsInHand.push_back(Card());
+}

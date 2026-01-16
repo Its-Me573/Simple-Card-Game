@@ -2,6 +2,9 @@
 
 #define House
 
-class playingHouse;
+class PlayingHouse{
+    public:
+        PlayingHouse();
+};
 
 #endif

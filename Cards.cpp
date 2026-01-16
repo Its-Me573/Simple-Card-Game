@@ -4,9 +4,5 @@
 
 using std::vector;
 
-struct card{
-    std::string suite;
-    std::string visualValue;
-    int numberValue;
-};
+
 

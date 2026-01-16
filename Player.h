@@ -1,7 +1,11 @@
 #ifndef Player
+#include <vector>
 
 #define Player
 
-class PlayingUser;
+class PlayingUser{
+    public:
+        PlayingUser();
+};
 
 #endif
