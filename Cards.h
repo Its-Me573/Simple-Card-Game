@@ -1,5 +1,6 @@
 #ifndef Cards_H
 
+#include <string>
 #define Cards_H
 
 struct Card{
