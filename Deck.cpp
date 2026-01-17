@@ -2,6 +2,8 @@
 #include <string>
 #include "Cards.h"
 #include "Deck.h"
+#include <iostream>
+
 
 DeckOfCards::DeckOfCards(){
     //52 Card size vector
@@ -13,81 +15,126 @@ DeckOfCards::DeckOfCards(){
         playingDeck.push_back(Card());
     }
 
-
-
-    //to do
-    //this entire section is placing values wrong. it keeps overwriting previous values
-    //because the current index isnt being tracked
-    //add an int that trackls the current value and use that as the index reference
-
-
-
-    //initialize all hearts first excluding Aces, Kings, Queens, and Jacks
     //Hearts
+    int currentIndex = 0;
     for(int i = 0; i < 9; i++){
         int currentSuiteValue = i + 2;
-        playingDeck[i].suite = "♥";
-        playingDeck[i].numberValue = currentSuiteValue;
-        playingDeck[i].visualValue = std::to_string(currentSuiteValue);
+        playingDeck[currentIndex].suite = "♥";
+        playingDeck[currentIndex].numberValue = currentSuiteValue;
+        playingDeck[currentIndex].visualValue = std::to_string(currentSuiteValue);
+        currentIndex++;
     }
 
     //Diamonds
     for(int i = 0; i < 9; i++){
         int currentSuiteValue = i + 2;
-        playingDeck[i].suite = "♦";
-        playingDeck[i].numberValue = currentSuiteValue;
-        playingDeck[i].visualValue = std::to_string(currentSuiteValue);
+        playingDeck[currentIndex].suite = "♦";
+        playingDeck[currentIndex].numberValue = currentSuiteValue;
+        playingDeck[currentIndex].visualValue = std::to_string(currentSuiteValue);
+        currentIndex++;
     }
 
     //Clubs
     for(int i = 0; i < 9; i++){
         int currentSuiteValue = i + 2;
-        playingDeck[i].suite = "♣";
-        playingDeck[i].numberValue = currentSuiteValue;
-        playingDeck[i].visualValue = std::to_string(currentSuiteValue);
+        playingDeck[currentIndex].suite = "♣";
+        playingDeck[currentIndex].numberValue = currentSuiteValue;
+        playingDeck[currentIndex].visualValue = std::to_string(currentSuiteValue);
+        currentIndex++;
     }
 
     //Spades
     for(int i = 0; i < 9; i++){
         int currentSuiteValue = i + 2;
-        playingDeck[i].suite = "♠";
-        playingDeck[i].numberValue = currentSuiteValue;
-        playingDeck[i].visualValue = std::to_string(currentSuiteValue);
+        playingDeck[currentIndex].suite = "♠";
+        playingDeck[currentIndex].numberValue = currentSuiteValue;
+        playingDeck[currentIndex].visualValue = std::to_string(currentSuiteValue);
+        currentIndex++;
     }
 
     //Kings
-    for(int i = 0; i < 4; i++){
+    for(int i = 0; i < 5; i++){
         switch(i){
             case 0:
-                playingDeck[i].suite = "♥";
+                playingDeck[currentIndex].suite = "♥";
                 break;
             case 1:
-                playingDeck[i].suite = "♦";
+                playingDeck[currentIndex].suite = "♦";
                 break;
             case 3:
-                playingDeck[i].suite = "♣";
+                playingDeck[currentIndex].suite = "♣";
                 break;
             case 4:
-                playingDeck[i].suite = "♠";
+                playingDeck[currentIndex].suite = "♠";
                 break;
         }
-        playingDeck[i].numberValue = 10;
-        playingDeck[i].visualValue = "K";
+        playingDeck[currentIndex].numberValue = 10;
+        playingDeck[currentIndex].visualValue = "K";
+        currentIndex++;
     }
 
     //Queens
-    for(int i = 0; i < 4; i++){
-        playingDeck[i].suite = "♠";
-        playingDeck[i].numberValue = 10;
-        playingDeck[i].visualValue = "K";
+    for(int i = 0; i < 5; i++){
+        switch(i){
+            case 0:
+                playingDeck[currentIndex].suite = "♥";
+                break;
+            case 1:
+                playingDeck[currentIndex].suite = "♦";
+                break;
+            case 3:
+                playingDeck[currentIndex].suite = "♣";
+                break;
+            case 4:
+                playingDeck[currentIndex].suite = "♠";
+                break;
+        }
+        playingDeck[currentIndex].numberValue = 10;
+        playingDeck[currentIndex].visualValue = "Q";
+        currentIndex++;
     }
 
     //Jacks
+    for(int i = 0; i < 5; i++){
+        switch(i){
+            case 0:
+                playingDeck[currentIndex].suite = "♥";
+                break;
+            case 1:
+                playingDeck[currentIndex].suite = "♦";
+                break;
+            case 3:
+                playingDeck[currentIndex].suite = "♣";
+                break;
+            case 4:
+                playingDeck[currentIndex].suite = "♠";
+                break;
+        }
+        playingDeck[currentIndex].numberValue = 10;
+        playingDeck[currentIndex].visualValue = "J";
+        currentIndex++;
+    }
 
     //Aces
-
-
-
+    for(int i = 0; i < 5; i++){
+        switch(i){
+            case 0:
+                playingDeck[currentIndex].suite = "♥";
+                break;
+            case 1:
+                playingDeck[currentIndex].suite = "♦";
+                break;
+            case 3:
+                playingDeck[currentIndex].suite = "♣";
+                break;
+            case 4:
+                playingDeck[currentIndex].suite = "♠";
+                break;
+        }
+        playingDeck[currentIndex].numberValue = 1;//Not blackjack rules
+        playingDeck[currentIndex].visualValue = "A";
+        currentIndex++;
+    }
 
 }
 
