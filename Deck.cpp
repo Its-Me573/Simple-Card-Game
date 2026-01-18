@@ -69,6 +69,10 @@ DeckOfCards::DeckOfCards(){
     faceCards(playingDeck, currentIndex, "♠");
 }
 
+
+//to do
+//shuffling the deck function. oh yeah
+
 //ascii art
 /** 
 ┌──────┐
