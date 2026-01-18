@@ -31,8 +31,127 @@ DeckOfCards::DeckOfCards(){
         currentIndex++;
    }
 
+   //All diamond 2-10
+   for(int i = 0; i < 9; i++){
+        int currentCardValue = i + 2;
+        playingDeck[currentIndex].numberValue = currentCardValue;
+        playingDeck[currentIndex].suite = "♦";
+        playingDeck[currentIndex].visualValue = std::to_string(currentCardValue);
+        currentIndex++;
+   }
 
+   //All clubs 2-10
+   for(int i = 0; i < 9; i++){
+        int currentCardValue = i + 2;
+        playingDeck[currentIndex].numberValue = currentCardValue;
+        playingDeck[currentIndex].suite = "♣";
+        playingDeck[currentIndex].visualValue = std::to_string(currentCardValue);
+        currentIndex++;
+   }
+
+   //All spade 2-10
+   for(int i = 0; i < 9; i++){
+        int currentCardValue = i + 2;
+        playingDeck[currentIndex].numberValue = currentCardValue;
+        playingDeck[currentIndex].suite = "♠";
+        playingDeck[currentIndex].visualValue = std::to_string(currentCardValue);
+        currentIndex++;
+   }
+
+   //All 4 jacks
+   for(int i = 0; i < 4; i++){
+        playingDeck[currentIndex].numberValue = 10;
+        //♥ ♦ ♣ ♠
+        switch(i){
+            case 0:
+                playingDeck[currentIndex].suite = "♥";
+                break;
+            case 1:
+                playingDeck[currentIndex].suite = "♦";
+                break;
+            case 2:
+                playingDeck[currentIndex].suite = "♣";
+                break;
+            case 3:
+                playingDeck[currentIndex].suite = "♠";
+                break;
+        }
+
+        playingDeck[currentIndex].visualValue = "J";
+        currentIndex++;
+   }
+
+   //All 4 Queens
+   for(int i = 0; i < 4; i++){
+        playingDeck[currentIndex].numberValue = 10;
+        //♥ ♦ ♣ ♠
+        switch(i){
+            case 0:
+                playingDeck[currentIndex].suite = "♥";
+                break;
+            case 1:
+                playingDeck[currentIndex].suite = "♦";
+                break;
+            case 2:
+                playingDeck[currentIndex].suite = "♣";
+                break;
+            case 3:
+                playingDeck[currentIndex].suite = "♠";
+                break;
+        }
+
+        playingDeck[currentIndex].visualValue = "Q";
+        currentIndex++;
+   }
+
+   //All 4 Kings
+   for(int i = 0; i < 4; i++){
+        playingDeck[currentIndex].numberValue = 10;
+        //♥ ♦ ♣ ♠
+        switch(i){
+            case 0:
+                playingDeck[currentIndex].suite = "♥";
+                break;
+            case 1:
+                playingDeck[currentIndex].suite = "♦";
+                break;
+            case 2:
+                playingDeck[currentIndex].suite = "♣";
+                break;
+            case 3:
+                playingDeck[currentIndex].suite = "♠";
+                break;
+        }
+
+        playingDeck[currentIndex].visualValue = "K";
+        currentIndex++;
+   }
+
+   //All 4 aces
+   //All 4 jacks
+   for(int i = 0; i < 4; i++){
+        playingDeck[currentIndex].numberValue = 1;
+        //♥ ♦ ♣ ♠
+        switch(i){
+            case 0:
+                playingDeck[currentIndex].suite = "♥";
+                break;
+            case 1:
+                playingDeck[currentIndex].suite = "♦";
+                break;
+            case 2:
+                playingDeck[currentIndex].suite = "♣";
+                break;
+            case 3:
+                playingDeck[currentIndex].suite = "♠";
+                break;
+        }
+
+        playingDeck[currentIndex].visualValue = "A";
+        currentIndex++;
+   }
 }
+
 
 //ascii art
 /** 
@@ -51,7 +170,7 @@ int main(){
     
     DeckOfCards testingTheDeck;
 
-    for(int i = 0; i < 9; i++){
+    for(int i = 0; i < 31; i++){
         std::cout << testingTheDeck.playingDeck[i].numberValue << std::endl;
         std::cout << testingTheDeck.playingDeck[i].suite << std::endl;
         std::cout << testingTheDeck.playingDeck[i].visualValue << std::endl;
