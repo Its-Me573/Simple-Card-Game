@@ -9,4 +9,4 @@ PlayingHouse::PlayingHouse(){
     HouseCardsInHand.push_back(Card());
     HouseCardsInHand.push_back(Card());
     HouseCardsInHand.push_back(Card());
-}
+}   

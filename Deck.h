@@ -11,7 +11,7 @@ class DeckOfCards{
 
         //vector for storing the cards
         std::vector<Card> playingDeck;
-        
+         
         //function that shuffles the vector parameter passed by reference
         void CardShuffling(std::vector<Card> &);
 };

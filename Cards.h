@@ -8,5 +8,5 @@ struct Card{
     std::string visualValue;
     int numberValue;
 };
-
+ 
 #endif
