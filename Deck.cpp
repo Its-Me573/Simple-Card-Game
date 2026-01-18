@@ -7,151 +7,67 @@
 #include "House.h"
 #include "Player.h"
 
-//constructor code for the class
-DeckOfCards::DeckOfCards(){
-    //♥ ♦ ♣ ♠ 
-    std::cout << "the constructor is working" << std::endl;
-
-    //initializing 52 Card structs
-    for(int i = 0; i < 52; i++){
-        playingDeck.push_back(Card());
-    }
-
-    std::cout << playingDeck.size() << " is the size of the vector" << std::endl;
-
-    //----------------------------------------------------------------------------
-    int currentIndex = 0;//keeping track of index having data added to it
-       
-   //All hearts 2-10
-   for(int i = 0; i < 9; i++){
+void normalNumberCards(std::vector<Card> &playingDeck, int &currentIndex, std::string suite){
+    for(int i = 0; i < 9; i++){
         int currentCardValue = i + 2;
         playingDeck[currentIndex].numberValue = currentCardValue;
-        playingDeck[currentIndex].suite = "♥";
+        playingDeck[currentIndex].suite = suite;
         playingDeck[currentIndex].visualValue = std::to_string(currentCardValue);
-        currentIndex++;
-   }
-
-   //All diamond 2-10
-   for(int i = 0; i < 9; i++){
-        int currentCardValue = i + 2;
-        playingDeck[currentIndex].numberValue = currentCardValue;
-        playingDeck[currentIndex].suite = "♦";
-        playingDeck[currentIndex].visualValue = std::to_string(currentCardValue);
-        currentIndex++;
-   }
-
-   //All clubs 2-10
-   for(int i = 0; i < 9; i++){
-        int currentCardValue = i + 2;
-        playingDeck[currentIndex].numberValue = currentCardValue;
-        playingDeck[currentIndex].suite = "♣";
-        playingDeck[currentIndex].visualValue = std::to_string(currentCardValue);
-        currentIndex++;
-   }
-
-   //All spade 2-10
-   for(int i = 0; i < 9; i++){
-        int currentCardValue = i + 2;
-        playingDeck[currentIndex].numberValue = currentCardValue;
-        playingDeck[currentIndex].suite = "♠";
-        playingDeck[currentIndex].visualValue = std::to_string(currentCardValue);
-        currentIndex++;
-   }
-
-   //All 4 jacks
-   for(int i = 0; i < 4; i++){
-        playingDeck[currentIndex].numberValue = 10;
-        //♥ ♦ ♣ ♠
-        switch(i){
-            case 0:
-                playingDeck[currentIndex].suite = "♥";
-                break;
-            case 1:
-                playingDeck[currentIndex].suite = "♦";
-                break;
-            case 2:
-                playingDeck[currentIndex].suite = "♣";
-                break;
-            case 3:
-                playingDeck[currentIndex].suite = "♠";
-                break;
-        }
-
-        playingDeck[currentIndex].visualValue = "J";
-        currentIndex++;
-   }
-
-   //All 4 Queens
-   for(int i = 0; i < 4; i++){
-        playingDeck[currentIndex].numberValue = 10;
-        //♥ ♦ ♣ ♠
-        switch(i){
-            case 0:
-                playingDeck[currentIndex].suite = "♥";
-                break;
-            case 1:
-                playingDeck[currentIndex].suite = "♦";
-                break;
-            case 2:
-                playingDeck[currentIndex].suite = "♣";
-                break;
-            case 3:
-                playingDeck[currentIndex].suite = "♠";
-                break;
-        }
-
-        playingDeck[currentIndex].visualValue = "Q";
-        currentIndex++;
-   }
-
-   //All 4 Kings
-   for(int i = 0; i < 4; i++){
-        playingDeck[currentIndex].numberValue = 10;
-        //♥ ♦ ♣ ♠
-        switch(i){
-            case 0:
-                playingDeck[currentIndex].suite = "♥";
-                break;
-            case 1:
-                playingDeck[currentIndex].suite = "♦";
-                break;
-            case 2:
-                playingDeck[currentIndex].suite = "♣";
-                break;
-            case 3:
-                playingDeck[currentIndex].suite = "♠";
-                break;
-        }
-
-        playingDeck[currentIndex].visualValue = "K";
-        currentIndex++;
-   }
-
-   //All 4 aces
-   //All 4 jacks
-   for(int i = 0; i < 4; i++){
-        playingDeck[currentIndex].numberValue = 1;
-        //♥ ♦ ♣ ♠
-        switch(i){
-            case 0:
-                playingDeck[currentIndex].suite = "♥";
-                break;
-            case 1:
-                playingDeck[currentIndex].suite = "♦";
-                break;
-            case 2:
-                playingDeck[currentIndex].suite = "♣";
-                break;
-            case 3:
-                playingDeck[currentIndex].suite = "♠";
-                break;
-        }
-
-        playingDeck[currentIndex].visualValue = "A";
         currentIndex++;
    }
 }
 
+//rewrite to print the jack queen king and ace of a single suite
+void faceCards(std::vector<Card> &playingDeck, int &currentIndex, std::string suite){
+    for(int i = 0; i < 4; i++){        
+        //♥ ♦ ♣ ♠
+        switch(i){
+            case 0:
+                playingDeck[currentIndex].visualValue = "J";
+                playingDeck[currentIndex].numberValue = 10;
+                break;
+            case 1:
+                playingDeck[currentIndex].visualValue = "Q";
+                playingDeck[currentIndex].numberValue = 10;
+                break;
+            case 2:
+                playingDeck[currentIndex].visualValue = "K";
+                playingDeck[currentIndex].numberValue = 10;
+                break;
+            case 3:
+                playingDeck[currentIndex].visualValue = "A";
+                playingDeck[currentIndex].numberValue = 1;
+                break;
+        }
+
+        playingDeck[currentIndex].suite = suite;
+        currentIndex++;
+   }
+}
+
+
+
+
+//constructor that initializes a full deck of 52 cards
+DeckOfCards::DeckOfCards(){
+    //♥ ♦ ♣ ♠ 
+    //initializing 52 Card structs
+    for(int i = 0; i < 52; i++){
+        playingDeck.push_back(Card());
+    }
+    //----------------------------------------------------------------------------
+    int currentIndex = 0;//keeping track of index having data added to it
+
+    normalNumberCards(playingDeck, currentIndex, "♥");
+    normalNumberCards(playingDeck, currentIndex, "♦");
+    normalNumberCards(playingDeck, currentIndex, "♣");
+    normalNumberCards(playingDeck, currentIndex, "♠");
+
+    faceCards(playingDeck, currentIndex, "♥");
+    faceCards(playingDeck, currentIndex, "♦");
+    faceCards(playingDeck, currentIndex, "♣");
+    faceCards(playingDeck, currentIndex, "♠");
+}
 
 //ascii art
 /** 
@@ -162,7 +78,6 @@ DeckOfCards::DeckOfCards(){
 │  ♠ J │
 └──────┘
 **/
-
 
 int main(){
     std::cout << "Hello World" << std::endl;
