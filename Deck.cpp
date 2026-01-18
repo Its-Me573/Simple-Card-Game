@@ -1,11 +1,14 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include <random>
 
 #include "Cards.h"
 #include "Deck.h"
-#include "House.h"
-#include "Player.h"
+
+
+//to do
+//remove playuer and house clas, trhey both do the same thing.  make them a single user class
 
 void normalNumberCards(std::vector<Card> &playingDeck, int &currentIndex, std::string suite){
     for(int i = 0; i < 9; i++){
@@ -45,17 +48,25 @@ void faceCards(std::vector<Card> &playingDeck, int &currentIndex, std::string su
    }
 }
 
+int randomNumberInRange(int maxRangeInclusive){
+    int randomIndex;
+    std::random_device rand_dev;//creates random seed
+    std::mt19937 generator(rand_dev());//seed is input into the generator
+    std:: uniform_int_distribution<int> distr(0, maxRangeInclusive);//from 0 to the max range possible
+
+    randomIndex = distr(generator);
+    return randomIndex;
+}
 
 
 
 //constructor that initializes a full deck of 52 cards
 DeckOfCards::DeckOfCards(){
-    //♥ ♦ ♣ ♠ 
     //initializing 52 Card structs
     for(int i = 0; i < 52; i++){
         playingDeck.push_back(Card());
     }
-    //----------------------------------------------------------------------------
+
     int currentIndex = 0;//keeping track of index having data added to it
 
     normalNumberCards(playingDeck, currentIndex, "♥");
@@ -69,19 +80,13 @@ DeckOfCards::DeckOfCards(){
     faceCards(playingDeck, currentIndex, "♠");
 }
 
- 
-//to do 
-//shuffling the deck function. oh yeah
-
-//ascii art
-/** 
-┌──────┐
-│J ♠   │
-│      │
-│      │
-│  ♠ J │
-└──────┘
-**/
+void DeckOfCards::CardShuffling(){//will use random number in range from the rng class that iwll be made soon
+    //create a random number from 0 to the size of the vector
+    //that random number is the current index of the array that you will swap with the last index of the array
+    //shorten the ranodm number from 0 to size - 1 everytime you swap elements
+    //swap until the vector has been shuffled and randomized
+    //if the random number selected is the last index of the array, keep that element there and move to the next swap
+}
 
 int main(){
     std::cout << "Hello World" << std::endl;
@@ -89,13 +94,8 @@ int main(){
     
     DeckOfCards testingTheDeck;
 
-    for(int i = 0; i < 31; i++){
-        std::cout << testingTheDeck.playingDeck[i].numberValue << std::endl;
-        std::cout << testingTheDeck.playingDeck[i].suite << std::endl;
-        std::cout << testingTheDeck.playingDeck[i].visualValue << std::endl;
-    }
-
-    std::cout << "-------------------------------" << std::endl;
-    std::cout << "The program ends" << std::endl;
     
+    
+    std::cout << "-------------------------------" << std::endl;
+    std::cout << "The program ends" << std::endl;   
 }
