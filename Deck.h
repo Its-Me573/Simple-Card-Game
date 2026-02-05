@@ -16,6 +16,8 @@ class DeckOfCards{
 
         //function that shuffles the vector parameter passed by reference
         void CardShuffling(std::vector<Card> &);
+        //print the deck of cards
+        void printTheDeck(std::vector<Card> &);
 };
 
 #endif

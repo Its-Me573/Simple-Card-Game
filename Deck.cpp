@@ -5,11 +5,9 @@
 
 #include "Cards.h"
 #include "Deck.h"
+#include "RNG.h"
 
-
-//to do
-//remove playuer and house clas, trhey both do the same thing.  make them a single user class
-
+//set all number cards of a single suite
 void normalNumberCards(std::vector<Card> &playingDeck, int &currentIndex, std::string suite){
     for(int i = 0; i < 9; i++){
         int currentCardValue = i + 2;
@@ -58,8 +56,6 @@ int randomNumberInRange(int maxRangeInclusive){
     return randomIndex;
 }
 
-
-
 //constructor that initializes a full deck of 52 cards
 DeckOfCards::DeckOfCards(){
     //initializing 52 Card structs
@@ -80,12 +76,36 @@ DeckOfCards::DeckOfCards(){
     faceCards(playingDeck, currentIndex, "♠");
 }
 
-void DeckOfCards::CardShuffling(){//will use random number in range from the rng class that iwll be made soon
-    //create a random number from 0 to the size of the vector
-    //that random number is the current index of the array that you will swap with the last index of the array
-    //shorten the ranodm number from 0 to size - 1 everytime you swap elements
-    //swap until the vector has been shuffled and randomized
-    //if the random number selected is the last index of the array, keep that element there and move to the next swap
+void DeckOfCards::CardShuffling(std::vector<Card> &theDeck){
+    //get a random index from 0 to the current index of theDeck being randomized
+    int currentLastIndex = theDeck.size()-1;
+    int randomIndexInRange;
+    Card tempCardPlaceholder;
+    for(int i = 0; i < theDeck.size(); i++){
+        //std::cout << "The current last index is " << currentLastIndex << std::endl;
+        randomIndexInRange = RandomNum::randomNumberInRange(0, currentLastIndex);
+        //std::cout << "The random num is " << randomIndexInRange << std::endl;
+    
+        //set the Card placeholder equal to the last index within range to store the value of it;
+        tempCardPlaceholder = theDeck[currentLastIndex];
+        //set the last index of theDeck equal to the randomIndexInRange
+        theDeck[currentLastIndex] = theDeck[randomIndexInRange];
+        //set the randomIndexInRange equal to the last index by useing the tempCardHolder
+        theDeck[randomIndexInRange] = tempCardPlaceholder;
+
+        //set the range 1 less since the last element is already completed;
+        currentLastIndex--;
+    }
+}
+
+void DeckOfCards::printTheDeck(std::vector<Card> &theDeck){
+    for(int i = 0; i < theDeck.size(); i++){
+        //print the cards with a seperation marking each line as together
+        std::cout << "-------------" << std::endl;
+        std::cout << theDeck[i].suite << std::endl;
+        std::cout << theDeck[i].visualValue << std::endl;
+        std::cout << "-------------" << std::endl;
+    }
 }
 
 int main(){
@@ -93,9 +113,15 @@ int main(){
     std::cout << "-------------------------------" << std::endl;
     
     DeckOfCards testingTheDeck;
+    //print the deck for testing
+    testingTheDeck.printTheDeck(testingTheDeck.playingDeck);
+    
+    //call shuffler function
+    testingTheDeck.CardShuffling(testingTheDeck.playingDeck);
+    std::cout << "-----------------After shuffling-------------------------" << std::endl;
+    //print the deck after shuffling
+    testingTheDeck.printTheDeck(testingTheDeck.playingDeck);
 
-    
-    
     std::cout << "-------------------------------" << std::endl;
     std::cout << "The program ends" << std::endl;   
 }
