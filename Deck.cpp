@@ -7,7 +7,11 @@
 #include "Deck.h"
 #include "RNG.h"
 
-//set all number cards of a single suite
+/** Initializes normal value of cards 1-9 with the specified suite
+ * @param playingDeck deck of cards object
+ * @param currentIndex current index of the vector
+ * @param suite the string of the cards suite
+ */
 void normalNumberCards(std::vector<Card> &playingDeck, int &currentIndex, std::string suite){
     for(int i = 0; i < 9; i++){
         int currentCardValue = i + 2;
@@ -18,7 +22,11 @@ void normalNumberCards(std::vector<Card> &playingDeck, int &currentIndex, std::s
    }
 }
 
-//rewrite to print the jack queen king and ace of a single suite
+/** Initializes cards with face values. Jack, Queen, Kind, and Aces
+ * @param playingDeck deck of cards object
+ * @param currentIndex the current starting position of the cards being initialized
+ * @param suite the suite of the cards being initialized
+ */
 void faceCards(std::vector<Card> &playingDeck, int &currentIndex, std::string suite){
     for(int i = 0; i < 4; i++){        
         //♥ ♦ ♣ ♠
@@ -46,6 +54,10 @@ void faceCards(std::vector<Card> &playingDeck, int &currentIndex, std::string su
    }
 }
 
+/** Return the random index in range by calling a random number
+ * @param maxRangeInclusive The max range of vector for a random number
+ * @return the random index of the vector in range
+ */
 int randomNumberInRange(int maxRangeInclusive){
     int randomIndex;
     std::random_device rand_dev;//creates random seed
@@ -56,7 +68,7 @@ int randomNumberInRange(int maxRangeInclusive){
     return randomIndex;
 }
 
-//constructor that initializes a full deck of 52 cards
+//Initializes a vector of cards and initializes the values of the cards
 DeckOfCards::DeckOfCards(){
     //initializing 52 Card structs
     for(int i = 0; i < 52; i++){
@@ -76,6 +88,9 @@ DeckOfCards::DeckOfCards(){
     faceCards(playingDeck, currentIndex, "♠");
 }
 
+/** Shuffles the vector storing the deck of cards
+ * @param theDeck the vector storing the deck of cards
+ */
 void DeckOfCards::CardShuffling(std::vector<Card> &theDeck){
     //get a random index from 0 to the current index of theDeck being randomized
     int currentLastIndex = theDeck.size()-1;
@@ -98,6 +113,9 @@ void DeckOfCards::CardShuffling(std::vector<Card> &theDeck){
     }
 }
 
+/** Prints the information at an index of the deck with card value
+ * @param theDeck the vector whose indexes are being printed
+ */
 void DeckOfCards::printTheDeck(std::vector<Card> &theDeck){
     for(int i = 0; i < theDeck.size(); i++){
         //print the cards with a seperation marking each line as together
