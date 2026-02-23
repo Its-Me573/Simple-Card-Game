@@ -13,9 +13,9 @@ class playingUser{
         
     public:
         //function that requests for a single card from the deck of cards
-        void grabCardFromDeck(std::vector<Card> deckOfCards);
+        void grabCardFromDeck(std::vector<Card> &deckOfCards);
         //function that puts a card back in the deck
-        void returnCardToDeck(std::vector<Card> deckOfCards);
+        void returnCardToDeck(std::vector<Card> &deckOfCards, int cardToRemove);
 
 };
 
