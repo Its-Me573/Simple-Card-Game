@@ -96,7 +96,7 @@ void DeckOfCards::CardShuffling(std::vector<Card> &theDeck){
     int currentLastIndex = theDeck.size()-1;
     int randomIndexInRange;
     Card tempCardPlaceholder;
-    for(int i = 0; i < theDeck.size(); i++){
+    for(size_t i = 0; i < theDeck.size(); i++){
         //std::cout << "The current last index is " << currentLastIndex << std::endl;
         randomIndexInRange = RandomNum::randomNumberInRange(0, currentLastIndex);
         //std::cout << "The random num is " << randomIndexInRange << std::endl;
@@ -117,29 +117,11 @@ void DeckOfCards::CardShuffling(std::vector<Card> &theDeck){
  * @param theDeck the vector whose indexes are being printed
  */
 void DeckOfCards::printTheDeck(std::vector<Card> &theDeck){
-    for(int i = 0; i < theDeck.size(); i++){
+    for(size_t i = 0; i < theDeck.size(); i++){
         //print the cards with a seperation marking each line as together
         std::cout << "-------------" << std::endl;
         std::cout << theDeck[i].suite << std::endl;
         std::cout << theDeck[i].visualValue << std::endl;
         std::cout << "-------------" << std::endl;
     }
-}
-
-int main(){
-    std::cout << "Hello World" << std::endl;
-    std::cout << "-------------------------------" << std::endl;
-    
-    DeckOfCards testingTheDeck;
-    //print the deck for testing
-    testingTheDeck.printTheDeck(testingTheDeck.playingDeck);
-    
-    //call shuffler function
-    testingTheDeck.CardShuffling(testingTheDeck.playingDeck);
-    std::cout << "-----------------After shuffling-------------------------" << std::endl;
-    //print the deck after shuffling
-    testingTheDeck.printTheDeck(testingTheDeck.playingDeck);
-
-    std::cout << "-------------------------------" << std::endl;
-    std::cout << "The program ends" << std::endl;   
 }

@@ -20,3 +20,19 @@ void playingUser::returnCardToDeck(std::vector<Card> &deckOfCards, int cardToRem
     deckOfCards.push_back(usersHand[cardToRemove-1]);
     usersHand.erase(usersHand.begin() + (cardToRemove-1));
 }
+
+/** Returns the string of a single card
+ * @param index Index of card being returned
+ */
+std::string playingUser::getOneCard(int index){
+    std::string returnString;
+    returnString = returnString + usersHand[index].visualValue;
+    returnString = returnString + usersHand[index].suite;
+    return returnString;
+}
+
+void playingUser::printPlayerHand(){
+    std::cout << "Card one: " << getOneCard(0) << std::endl;
+    std::cout << "Card two: " << getOneCard(1) << std::endl;
+    std::cout << "Card three: " << getOneCard(2) << std::endl;
+}
